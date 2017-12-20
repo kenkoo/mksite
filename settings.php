@@ -21,7 +21,7 @@ define('CONFIG_PATH', null);
  * e.g domain/public_html.
  * Default document root is domain name.
  */
-define('PUBLIC_DIR', 'public');
+define('PUBLIC_DIR', null);
 
 /**
  * Prompt string.
