@@ -6,22 +6,22 @@
  *
  * Required to set!
  */
-define('SERVER_WEB_ROOT', null);
+define('SERVER_WEB_ROOT', '/var/www');
 
 /**
  * Path to server virtual host conf files,
- * for Debian based system /etc/apache2/sites-available/.
+ * for Debian based system /etc/apache2/sites-available.
  *
  * Required to set!
  */
-define('CONFIG_PATH', null);
+define('CONFIG_PATH', '/etc/apache2/sites-available');
 
 /**
  * Define site public directory if needed
  * e.g domain/public_html.
  * Default document root is domain name.
  */
-define('PUBLIC_DIR', null);
+define('PUBLIC_DIR', 'public');
 
 /**
  * Prompt string.

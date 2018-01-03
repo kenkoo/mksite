@@ -53,13 +53,19 @@ try {
      * If you use native linux machine you need to change files permissions.
      */
     if (!is_dir($document_root)) {
-        mkdir($document_root, 0777, true);
+        mkdir($document_root, 0755, true);
+        exec('chown -R kenkoo:kenkoo ' . SERVER_WEB_ROOT . '/' . $host);
     }
 
     /**
      * Enable the new virtual host.
      */
     exec('a2ensite ' . $host . '.conf > /dev/null');
+
+    /**
+     * Write the site to a hosts file.
+     */
+    file_put_contents("\n" . '/etc/hosts', '127.0.0.1' . "\t" . $host, FILE_APPEND);
 
     /**
      * Reload apache to make these changes take effect.
