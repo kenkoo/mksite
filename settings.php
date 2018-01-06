@@ -6,7 +6,7 @@
  *
  * Required to set!
  */
-define('SERVER_WEB_ROOT', '/var/www');
+define('SERVER_WEB_ROOT', '/media/sf_projects');
 
 /**
  * Path to server virtual host conf files,
@@ -19,11 +19,12 @@ define('CONFIG_PATH', '/etc/apache2/sites-available');
 /**
  * Define site public directory if needed
  * e.g domain/public_html.
- * Default document root is domain name.
+ * 
+ * By default document root is domain name.
  */
-define('PUBLIC_DIR', 'public');
+define('PUBLIC_DIR', null);
 
 /**
  * Prompt string.
  */
-define('PROMPT', 'Check settings! Please enter domain name: ');
+define('PROMPT', 'Please enter domain name: ');

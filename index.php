@@ -11,6 +11,9 @@ $host = readline(PROMPT);
 
 try {
 
+    if ($_SERVER['USER'] !== "root") {
+        throw new Exception("Run the script with root rights\n");
+    }
     if (!SERVER_WEB_ROOT) {
         throw new Exception("Not set server document root path!\n");
     }
@@ -49,12 +52,9 @@ try {
 
     /**
      * Creating the site directory if not exists.
-     * This will be right only you use virtualbox guest system.
-     * If you use native linux machine you need to change files permissions.
      */
     if (!is_dir($document_root)) {
         mkdir($document_root, 0755, true);
-        exec('chown -R kenkoo:kenkoo ' . SERVER_WEB_ROOT . '/' . $host);
     }
 
     /**
@@ -63,15 +63,14 @@ try {
     exec('a2ensite ' . $host . '.conf > /dev/null');
 
     /**
-     * Write the site to a hosts file.
-     */
-    file_put_contents("\n" . '/etc/hosts', '127.0.0.1' . "\t" . $host, FILE_APPEND);
-
-    /**
      * Reload apache to make these changes take effect.
      */
     exec('systemctl reload apache2.service');
 
+    /**
+     * Message
+     */
+    echo "Done!\nPut new host in the file - 'C:\Windows\System32\drivers\etc\hosts'\n";
 } catch (Exception $e) {
     echo $e->getMessage();
     exit;

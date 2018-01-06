@@ -1,9 +1,8 @@
 <?php
 
 /**
- * Host config
+ * Apache virtual host config
  */
-
 return <<<"EOF"
 <VirtualHost *:80>
   ServerAdmin admin@localhost
