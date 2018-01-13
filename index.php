@@ -10,6 +10,9 @@ require_once 'settings.php';
 $host = readline(PROMPT);
 
 try {
+    if ($_SERVER['USER'] !== 'root') {
+        throw new Exception("Need root!\n");
+    }
 
     if (!SERVER_WEB_ROOT) {
         throw new Exception("Not set server document root path!\n");
@@ -53,8 +56,8 @@ try {
      * If you use native linux machine you need to change files permissions.
      */
     if (!is_dir($document_root)) {
-        mkdir($document_root, 0755, true);
-        exec('chown -R kenkoo:kenkoo ' . SERVER_WEB_ROOT . '/' . $host);
+        exec('mkdir -p ' . $document_root);
+        exec('chown -R ' . OWNER . ':' . OWNER . ' ' . SERVER_WEB_ROOT . '/' . $host);
     }
 
     /**
@@ -65,7 +68,7 @@ try {
     /**
      * Write the site to a hosts file.
      */
-    file_put_contents("\n" . '/etc/hosts', '127.0.0.1' . "\t" . $host, FILE_APPEND);
+    file_put_contents("/etc/hosts", "127.0.0.1\t" . $host . "\n", FILE_APPEND);
 
     /**
      * Reload apache to make these changes take effect.
