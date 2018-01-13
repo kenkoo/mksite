@@ -20,6 +20,9 @@ try {
     if (!CONFIG_PATH) {
         throw new Exception("Not set host config path!\n");
     }
+    if (!OWNER) {
+        throw new Exception("Not set site owner!\n");
+    }
 
     /**
      * Create path to host document root.

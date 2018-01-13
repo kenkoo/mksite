@@ -6,7 +6,7 @@
  *
  * Required to set!
  */
-define('SERVER_WEB_ROOT', '/home/mike/WebProjects');
+define('SERVER_WEB_ROOT', null);
 
 /**
  * Path to server virtual host conf files,
@@ -26,7 +26,7 @@ define('PUBLIC_DIR', null);
 /**
  * Define site owner user
  */
-define('OWNER', 'mike');
+define('OWNER', null);
 
 /**
  * Prompt string.
